@@ -1,0 +1,489 @@
+\documentclass[12pt]{report}
+
+% ------------------------------------------------------------
+% NutriFast C964 Task 2 capstone report shell
+% This outline follows the Task 2 requirements and rubric.
+% Replace bracketed notes with original writing and evidence.
+% ------------------------------------------------------------
+
+% Page layout and text
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+% Figures, tables, and code
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{minted}
+
+% Links and citations
+\usepackage[hidelinks]{hyperref}
+\usepackage[style=apa, backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\graphicspath{{figures/}}
+\setlist[itemize]{leftmargin=1.5em}
+\setlist[enumerate]{leftmargin=1.75em}
+
+% Placeholder helper. Remove or replace these notes before submission.
+\newcommand{\placeholder}[1]{\textcolor{gray}{[#1]}}
+
+\begin{document}
+
+% ------------------------------------------------------------
+% Title page
+% ------------------------------------------------------------
+\begin{titlepage}
+    \centering
+
+    {\scshape\LARGE Western Governors University\par}
+    \vspace{1.5cm}
+
+    {\scshape\Large Bachelor of Science in Computer Science\par}
+    \vspace{2cm}
+
+    {\huge\bfseries NutriFast: AI-Powered Meal Planning \& Fasting Assistant\par}
+    \vspace{0.5cm}
+
+    {\Large A Data-Driven Approach to Personalized Nutrition and Fasting Optimization\par}
+    \vspace{1.5cm}
+
+    {\Large A Capstone Project Report Submitted in Partial Fulfillment of the Requirements for the Bachelor of Science degree in Computer Science\par}
+    \vspace{2cm}
+
+    {\Large Author: Nicholas D. Mensah\par}
+    \vspace{0.5cm}
+
+    {\Large Capstone Advisor: Dr. Charlie Paddock\par}
+    \vspace{2cm}
+
+    {\Large \today\par}
+    \vfill
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+% ------------------------------------------------------------
+% Letter of transmittal
+% Requirement A
+% ------------------------------------------------------------
+\chapter*{Letter of Transmittal}
+\addcontentsline{toc}{chapter}{Letter of Transmittal}
+
+\doublespacing
+
+\today
+
+\vspace{0.5cm}
+
+Dr. Charlie Paddock\\
+Western Governors University\\
+4001 S 700 E \#300\\
+Millcreek, UT 84107\\
+
+\vspace{0.75cm}
+
+Dear Dr. Paddock,
+
+\vspace{0.25cm}
+
+\textbf{Subject: Proposal for NutriFast: AI-Powered Meal Planning \& Fasting Assistant}
+
+\vspace{0.25cm}
+
+I am pleased to submit my capstone project proposal for \textit{NutriFast: AI-Powered Meal Planning \& Fasting Assistant}. NutriFast addresses a practical wellness decision-support problem: users often need to coordinate meal choices, calorie and macronutrient goals, and intermittent fasting schedules without receiving a clear view of how those decisions affect daily progress.
+
+Generic nutrition tools can make it difficult for users to connect available food data with personal goals. A user may know a calorie target or protein goal but still need help identifying meals that fit those constraints, monitoring fasting activity, and reviewing progress over time. NutriFast responds to this gap with an interactive data product that combines nutrition data processing, meal recommendation functionality, fasting tracking, and progress analytics.
+
+The implemented prototype uses an Angular frontend and a FastAPI backend supported by a cleaned food feature dataset derived from available nutrition data. The product provides interactive meal search and recommendation queries, a fasting tracker, user profile settings, and dashboard views that summarize nutrition and progress signals. These features support decisions about what meals to consider, how closely nutrition choices align with goals, and how fasting and weight trends are changing over time.
+
+NutriFast benefits customers by reducing the effort required to inspect food nutrition data and by presenting wellness information in a usable format. The product also demonstrates how a nutrition dataset can be prepared, transformed into model-ready features, and served through an interactive application for decision support.
+
+The capstone prototype uses open-source development tools and available data resources to control direct development cost. A production implementation would require a final hosting plan, privacy review, security review, and maintenance budget based on expected users and data retention needs. \placeholder{Replace this sentence with the funding estimate approved in Task 1 if it differs.}
+
+Ethical and legal considerations are important because health-related preferences and profile data can be sensitive. NutriFast is designed as a wellness decision-support prototype rather than medical advice. The project documentation will address data minimization, secure handling of user information, appropriate communication of limitations, and the need to avoid overstating recommendation accuracy.
+
+My relevant expertise includes software development, data preparation, full-stack application design, and applied machine learning concepts from the computer science program. I appreciate your consideration of this project and look forward to presenting the final data product and supporting documentation.
+
+\vspace{0.5cm}
+
+Sincerely,
+
+\vspace{0.5cm}
+
+\textbf{Nicholas D. Mensah}\\
+Bachelor of Science in Computer Science Candidate\\
+Western Governors University
+
+\singlespacing
+\newpage
+
+% ------------------------------------------------------------
+% Front matter
+% ------------------------------------------------------------
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\placeholder{Write a concise abstract after the project is complete. Summarize the problem, dataset, recommendation method, dashboard, validation, and final outcome in one page or less.}
+\newpage
+
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
+I sincerely thank my Capstone Advisor, Dr. Charlie Paddock, for guidance and support throughout this project. I also thank my family and the faculty at Western Governors University for their encouragement during the development of this capstone.
+\newpage
+
+% ------------------------------------------------------------
+% Requirement A: Project proposal
+% ------------------------------------------------------------
+\chapter{Project Proposal}
+
+\section{Problem Summary}
+\placeholder{Explain the business or customer problem in plain language for senior nontechnical readers. Describe the difficulty of selecting meals that match nutrition goals while also tracking fasting and health progress.}
+
+\section{Customer Benefits and Decision Support}
+\placeholder{Describe how NutriFast helps users make decisions. Examples include filtering meal options by calorie and macro constraints, tracking fasting windows, and reviewing weight or calorie trends before adjusting habits.}
+
+\section{Data Product Outline}
+\placeholder{Outline the major product features: dataset preparation pipeline, FastAPI nutrition endpoints, recommendation endpoint, Angular meal suggestion interface, fasting tracker, progress dashboard, analytics summary, and settings/profile support.}
+
+\begin{table}[H]
+    \centering
+    \caption{NutriFast Product Outline}
+    \begin{tabular}{p{0.28\textwidth} p{0.58\textwidth}}
+        \toprule
+        Component & Purpose \\
+        \midrule
+        Dataset pipeline & Parses, cleans, and featurizes food nutrition data. \\
+        Recommendation service & Returns meal candidates aligned with nutrition constraints. \\
+        Interactive frontend & Allows meal search, meal recommendation queries, and fasting tracking. \\
+        Dashboard and analytics & Summarizes nutrition, fasting, progress, and goal signals. \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Data Description}
+\placeholder{Identify the raw nutrition dataset, the cleaned dataset, key nutrition fields, data limitations, and why the project stores prepared food features in a Parquet file for application use. Cite the dataset source.}
+
+\section{Objectives and Hypotheses}
+\subsection{Project Objectives}
+\begin{enumerate}
+    \item Prepare usable nutrition features from available food data.
+    \item Provide interactive meal search and nutrition-based recommendation queries.
+    \item Provide descriptive dashboards for nutrition, fasting, and progress review.
+    \item Evaluate whether the implemented data product returns useful and valid results for the supported user queries.
+\end{enumerate}
+
+\subsection{Project Hypotheses}
+\begin{enumerate}
+    \item \textbf{H1:} A cleaned nutrition feature dataset can support fast meal search and recommendation queries for the NutriFast prototype.
+    \item \textbf{H2:} Nutrition-based recommendation logic can identify meal candidates that satisfy user-entered calorie and macronutrient constraints more efficiently than manually reviewing raw food records.
+    \item \textbf{H3:} Descriptive dashboard visualizations can make progress signals easier for users to inspect than raw nutrition and fasting logs alone.
+\end{enumerate}
+
+\section{Project Methodology}
+\placeholder{Summarize the development method. A useful structure is data acquisition, data cleaning and preparation, recommendation design, API implementation, frontend implementation, visualization design, testing, and documentation.}
+
+\section{Funding Requirements}
+\placeholder{State the expected prototype cost and production cost assumptions. Include development tools, hosting assumptions, storage, maintenance, and any required human resources. Avoid claiming costs that are not supported by the actual implementation plan.}
+
+\section{Stakeholder Impact}
+\placeholder{Describe the impact on users, the project owner, technical maintainers, and any organization that might deploy the product.}
+
+\section{Ethical and Legal Considerations}
+\placeholder{Discuss sensitive profile data, nutrition and health communication limits, dataset licensing or attribution, privacy, security controls, bias or coverage limits in food data, and the need to avoid presenting the product as medical advice.}
+
+\section{Relevant Expertise}
+\placeholder{Describe real or hypothetical expertise relevant to the project, such as full-stack development, data cleaning, API design, Angular, Python, applied machine learning, testing, and cloud deployment planning.}
+
+% ------------------------------------------------------------
+% Requirement B: Executive summary for IT professionals
+% ------------------------------------------------------------
+\chapter{Executive Summary for IT Professionals}
+
+\section{Decision Support Problem or Opportunity}
+\placeholder{Explain the decision-support opportunity at a technical level. Identify the decisions the application supports and why an interactive data product is appropriate.}
+
+\section{Customers and User Needs}
+\placeholder{Describe target users, their nutrition and fasting workflow needs, and why the product design addresses those needs.}
+
+\section{Existing Product Gaps}
+\placeholder{Describe gaps in generic wellness tools or the starting prototype. If no product is replaced, explain the gap NutriFast fills.}
+
+\section{Available and Required Data}
+\placeholder{Describe available food nutrition data, processed feature data, profile settings, meal constraints, fasting inputs, and any future data needed for a production lifecycle.}
+
+\section{Development Methodology}
+\placeholder{Explain the technical methodology used to design and develop the data product. Include iterative development, API verification, frontend testing, data preparation, and documentation.}
+
+\section{Deliverables}
+\begin{itemize}
+    \item NutriFast frontend dashboard and interactive user flows.
+    \item FastAPI backend endpoints for food search and meal recommendation queries.
+    \item Raw or available nutrition data references and cleaned food feature data.
+    \item Data preparation, analysis, and recommendation source code.
+    \item Validation evidence, screenshots, quick-start guide, and final report.
+\end{itemize}
+
+\section{Implementation Plan and Anticipated Outcomes}
+\placeholder{Explain how the product is installed, configured, run, tested, and demonstrated. State the expected outcome for the prototype.}
+
+\section{Validation and Verification Plan}
+\placeholder{Describe how functionality is verified: dataset preparation checks, API response checks, frontend interaction checks, dashboard rendering checks, recommendation constraint checks, and user-flow screenshots.}
+
+\section{Programming Environments, Costs, and Resources}
+\begin{table}[H]
+    \centering
+    \caption{Programming Environments and Resources}
+    \begin{tabular}{p{0.23\textwidth} p{0.31\textwidth} p{0.30\textwidth}}
+        \toprule
+        Area & Tools & Resource or Cost Notes \\
+        \midrule
+        Backend & Python, FastAPI, data-processing libraries & Open-source development stack. \\
+        Frontend & Angular, TypeScript, browser testing & Open-source development stack. \\
+        Data & Nutrition dataset and prepared feature file & Cite source and storage needs. \\
+        Human resources & Developer, advisor, tester or evaluator & Describe assignments by phase. \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Timeline, Milestones, Dependencies, and Resources}
+\begin{longtable}{p{0.19\textwidth} p{0.13\textwidth} p{0.13\textwidth} p{0.13\textwidth} p{0.18\textwidth} p{0.13\textwidth}}
+    \caption{Projected Project Timeline}\\
+    \toprule
+    Milestone & Start & End & Duration & Dependencies & Resources \\
+    \midrule
+    \endfirsthead
+    \toprule
+    Milestone & Start & End & Duration & Dependencies & Resources \\
+    \midrule
+    \endhead
+    Proposal approval & \placeholder{date} & \placeholder{date} & \placeholder{days} & Task 1 approval & Student, advisor \\
+    Dataset preparation & \placeholder{date} & \placeholder{date} & \placeholder{days} & Dataset access & Python, dataset \\
+    Backend API development & \placeholder{date} & \placeholder{date} & \placeholder{days} & Prepared data plan & FastAPI \\
+    Frontend dashboard development & \placeholder{date} & \placeholder{date} & \placeholder{days} & API design & Angular \\
+    Validation and revision & \placeholder{date} & \placeholder{date} & \placeholder{days} & Working product & Tests, screenshots \\
+    Final documentation & \placeholder{date} & \placeholder{date} & \placeholder{days} & Validation results & Overleaf, report \\
+    \bottomrule
+\end{longtable}
+
+% ------------------------------------------------------------
+% Requirement C: Fully functional data product
+% ------------------------------------------------------------
+\chapter{Data Product Design and Development}
+
+\section{System Overview}
+\placeholder{Describe the final architecture. Include frontend, backend, dataset preparation code, processed data artifact, and any profile or authentication elements used in the prototype.}
+
+\begin{figure}[H]
+    \centering
+    \fbox{\parbox[c][2.0in][c]{0.82\textwidth}{\centering
+    Add the NutriFast architecture diagram here.}}
+    \caption{NutriFast System Architecture}
+    \label{fig:architecture}
+\end{figure}
+
+\section{Collected or Available Datasets}
+\placeholder{Document the raw or available dataset files, the cleaned dataset file, key columns, record scope, and data source citations.}
+
+\section{Featurizing, Parsing, Cleaning, and Wrangling}
+\placeholder{Explain how raw nutrition records are parsed and cleaned, how nutrition features are selected, how missing or invalid records are handled, and how the prepared dataset supports API and recommendation use.}
+
+\section{Data Exploration and Preparation Methods}
+\placeholder{Describe descriptive checks used during preparation, such as inspecting columns, nutrition fields, missing values, portion records, usable rows, or macro availability.}
+
+\section{Descriptive Method}
+\placeholder{Explain the descriptive method implemented in NutriFast. Use the dashboard and progress analytics to describe calories, fasting duration, weight trend, adherence, or macro summaries.}
+
+\section{Nondescriptive Method}
+\placeholder{Explain the predictive or prescriptive method. For the current NutriFast design, describe the meal recommendation method and justify why it supports a prescriptive decision by ranking meal candidates against user-entered nutrition constraints.}
+
+\section{Decision Support Functionality}
+\placeholder{Describe how the product supports user decisions about meal selection, goal inspection, fasting schedules, and profile adjustments.}
+
+\section{Interactive Queries}
+\placeholder{Document food search inputs, AI meal suggestion inputs, API query parameters, recommendation responses, and any user filters. Add screenshots of the query interface and returned results.}
+
+\section{Machine Learning Methods and Algorithms}
+\placeholder{Describe the implemented recommendation method accurately. Include features used, scoring or ranking logic, constraints, outputs, and how the method is tested. If a trained model is added later, document training data, model choice, features, and evaluation metrics here.}
+
+\section{Data Visualization Functions}
+\placeholder{Explain at least three dashboard visualization types and what decision each visualization supports.}
+
+\begin{table}[H]
+    \centering
+    \caption{Dashboard Visualization Evidence}
+    \begin{tabular}{p{0.25\textwidth} p{0.29\textwidth} p{0.31\textwidth}}
+        \toprule
+        Visualization Type & NutriFast Location & Decision Support Purpose \\
+        \midrule
+        Weight trend display & Progress dashboard & Inspects change across recent weigh-ins. \\
+        Calorie bar chart & Progress or analytics dashboard & Compares daily intake pattern. \\
+        Fasting or macro chart & Fasting progress or analytics view & Inspects consistency or nutrition balance. \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Accuracy Evaluation}
+\placeholder{Define accuracy or correctness for this product. Possible evidence includes recommendation constraint satisfaction, API test cases, dataset preparation validation, and frontend verification of displayed outputs.}
+
+\section{Security Features}
+\placeholder{Describe security features appropriate for the implemented prototype and production plan. Address authentication or login behavior, profile data handling, API origin controls, input validation, privacy limits, and nonmedical-use communication.}
+
+\section{Monitoring and Maintenance}
+\placeholder{Describe logs, tests, dataset regeneration scripts, dependency maintenance, endpoint checks, and a plan for updating data and recommendations over time.}
+
+% ------------------------------------------------------------
+% Requirement D: Documentation artifacts
+% ------------------------------------------------------------
+\chapter{Product Documentation}
+
+\section{Business Vision and Requirements}
+\placeholder{Provide the business vision or requirements document content. State business need, product scope, functional requirements, nonfunctional requirements, and out-of-scope items.}
+
+\section{Raw and Cleaned Datasets}
+\placeholder{List the raw or available dataset files and cleaned dataset artifacts submitted with the project. Describe where the data cleaning code is stored.}
+
+\section{Data Cleaning and Feature Preparation Code}
+\placeholder{Discuss the executable scripts used to clean and prepare data. Reference selected source code excerpts or appendices instead of pasting every file into the main body.}
+
+\begin{minted}[fontsize=\small, breaklines]{python}
+# Example excerpt placeholder:
+# Replace with a short, relevant code excerpt from the data preparation pipeline.
+\end{minted}
+
+\section{Analysis and Data Product Construction Code}
+\placeholder{Describe the backend endpoints, recommendation code, frontend query components, and dashboard components that construct the descriptive and nondescriptive data product.}
+
+\section{Hypothesis Assessment}
+\begin{table}[H]
+    \centering
+    \caption{Hypothesis Assessment}
+    \begin{tabular}{p{0.15\textwidth} p{0.42\textwidth} p{0.25\textwidth}}
+        \toprule
+        Hypothesis & Evidence & Assessment \\
+        \midrule
+        H1 & \placeholder{Dataset preparation and API loading evidence.} & \placeholder{Accept or reject.} \\
+        H2 & \placeholder{Recommendation test and constraint evidence.} & \placeholder{Accept or reject.} \\
+        H3 & \placeholder{Visualization and user-flow evidence.} & \placeholder{Accept or reject.} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Visual Storytelling and Data Summary}
+\placeholder{Explain the visual narrative from raw nutrition data to meal recommendation output and progress dashboards. Include screenshots and figure captions that explain what the evaluator should notice.}
+
+\section{Product Accuracy Assessment}
+\placeholder{Summarize the final evaluation results, metrics, constraint checks, known limitations, and accuracy conclusions.}
+
+\section{Testing, Revisions, and Optimization}
+\placeholder{Document planned tests, actual results, revisions made after testing, optimization work, and screenshots that show working product behavior.}
+
+\begin{table}[H]
+    \centering
+    \caption{Testing and Revision Log}
+    \begin{tabular}{p{0.22\textwidth} p{0.24\textwidth} p{0.27\textwidth}}
+        \toprule
+        Test or Issue & Result & Revision or Evidence \\
+        \midrule
+        Dataset preparation & \placeholder{result} & \placeholder{evidence} \\
+        Recommendation API query & \placeholder{result} & \placeholder{evidence} \\
+        Dashboard visualizations & \placeholder{result} & \placeholder{evidence} \\
+        Fasting tracker interaction & \placeholder{result} & \placeholder{evidence} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Source Code and Executable Files}
+\placeholder{List the submitted source code, cleaning scripts, backend application files, frontend application files, prepared data files, and startup commands.}
+
+\section{Quick-Start Guide}
+\subsection{Prerequisites}
+\placeholder{List the required software, versions, environment variables, and any dataset files needed.}
+
+\subsection{Backend Startup}
+\placeholder{Provide the backend installation and run steps. Include the command used to start the FastAPI service and any data preparation command required.}
+
+\subsection{Frontend Startup}
+\placeholder{Provide the frontend installation and run steps. Include the Angular command and local URL.}
+
+\subsection{Core User Workflow}
+\begin{enumerate}
+    \item Open the NutriFast dashboard.
+    \item Update profile or weight settings as needed.
+    \item Search foods or submit a meal recommendation query.
+    \item Start or review a fasting session.
+    \item Inspect progress and analytics visualizations.
+\end{enumerate}
+
+% ------------------------------------------------------------
+% Conclusion
+% ------------------------------------------------------------
+\chapter{Conclusion}
+\placeholder{Conclude with the product outcome, whether objectives were achieved, the value of the data product, limitations, and future improvements.}
+
+% ------------------------------------------------------------
+% Appendices
+% ------------------------------------------------------------
+\appendix
+
+\chapter{Rubric Evidence Map}
+\begin{longtable}{p{0.34\textwidth} p{0.52\textwidth}}
+    \caption{Task 2 Rubric Evidence Map}\\
+    \toprule
+    Required Evidence & Where It Is Demonstrated \\
+    \midrule
+    \endfirsthead
+    \toprule
+    Required Evidence & Where It Is Demonstrated \\
+    \midrule
+    \endhead
+    Letter of transmittal and proposal & Letter of Transmittal and Chapter 1 \\
+    Executive summary for IT professionals & Chapter 2 \\
+    Descriptive method & Chapter 3 Descriptive Method section \\
+    Nondescriptive method & Chapter 3 Nondescriptive Method section \\
+    Dataset cleaning and preparation & Chapter 3 and Chapter 4 dataset sections \\
+    Interactive queries & Meal search and meal recommendation query evidence \\
+    Machine learning methods and algorithms & Recommendation method section and evaluation evidence \\
+    Accuracy evaluation & Accuracy Evaluation and Product Accuracy Assessment sections \\
+    Security features & Security Features section \\
+    Monitoring and maintenance & Monitoring and Maintenance section \\
+    Three dashboard visualization types & Visualization table and screenshots \\
+    Quick-start guide & Product Documentation quick-start section \\
+    \bottomrule
+\end{longtable}
+
+\chapter{Screenshots}
+\placeholder{Add labeled screenshots for the dashboard, meal recommendation query, food search, fasting tracker, progress visualizations, analytics summary, settings/profile flow, tests, and API evidence.}
+
+\begin{figure}[H]
+    \centering
+    \fbox{\parbox[c][2.0in][c]{0.82\textwidth}{\centering
+    Add a dashboard screenshot here.}}
+    \caption{NutriFast Dashboard Screenshot Placeholder}
+    \label{fig:dashboard-placeholder}
+\end{figure}
+
+\chapter{Selected Source Code}
+\placeholder{Add only the most important excerpts here. Submit the full source code separately as required.}
+
+\chapter{File Manifest}
+\placeholder{List report files, source code archive, dataset files, screenshots, quick-start artifacts, and any executable scripts included in the final submission.}
+
+% ------------------------------------------------------------
+% References
+% ------------------------------------------------------------
+\newpage
+\printbibliography
+
+\end{document}
